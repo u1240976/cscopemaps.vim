@@ -56,6 +56,7 @@ if has("cscope")
     " 1) <C-\> + map:     open search result
     " 2) <C-\> + h + map: open search result in horizontal split
     " 3) <C-\> + v + map: open search result in vertical split
+    " 4) <C-\> + t + map: open search result in new tab
  
     " You can use CTRL-T to go back to where you were before the search.  
 
@@ -103,6 +104,19 @@ if has("cscope")
     nmap <C-\>vf :vert scs find f <C-R>=expand("<cfile>")<CR><CR>	
     nmap <C-\>vi :vert scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>	
     nmap <C-\>vd :vert scs find d <C-R>=expand("<cword>")<CR><CR>
+
+    " open search result in New Tab
+    function! CscopeFindNewTab(word, type)
+        exe 'tabnew'
+        exe 'cs find '.a:type.' '.a:word
+    endfunction
+
+    nmap <C-\>ts :call CscopeFindNewTab('<C-R><C-W>', 's')<CR>
+    nmap <C-\>tg :call CscopeFindNewTab('<C-R><C-W>', 'g')<CR>
+    nmap <C-\>tc :call CscopeFindNewTab('<C-R><C-W>', 'c')<CR>
+    nmap <C-\>tt :call CscopeFindNewTab('<C-R><C-W>', 't')<CR>
+    nmap <C-\>te :call CscopeFindNewTab('<C-R><C-W>', 'e')<CR>
+    nmap <C-\>td :call CscopeFindNewTab('<C-R><C-W>', 'd')<CR>
 
 endif
 
