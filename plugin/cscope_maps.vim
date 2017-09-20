@@ -65,30 +65,30 @@ if has("cscope")
     " 'time.h', and not 'sys/time.h', etc. (by default cscope will return all
     " files that contain 'time.h' as part of their name).
 
-    nmap <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>	
-    nmap <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>	
-    nmap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>	
-    nmap <C-\>t :cs find t <C-R>=expand("<cword>")<CR><CR>	
-    nmap <C-\>e :cs find e <C-R>=expand("<cword>")<CR><CR>	
-    nmap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>	
-    nmap <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-    nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>	
+    nnoremap <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>	
+    nnoremap <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>	
+    nnoremap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>	
+    nnoremap <C-\>t :cs find t <C-R>=expand("<cword>")<CR><CR>	
+    nnoremap <C-\>e :cs find e <C-R>=expand("<cword>")<CR><CR>	
+    nnoremap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>	
+    nnoremap <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+    nnoremap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>	
 
 
     " Horizontal split, with search result displayed in the new window.
     "
     " (Note: earlier versions of vim may not have the :scs command, but it
     " can be simulated roughly via:
-    "    nmap <C-@>s <C-W><C-S> :cs find s <C-R>=expand("<cword>")<CR><CR>	
+    "    nnoremap <C-@>s <C-W><C-S> :cs find s <C-R>=expand("<cword>")<CR><CR>	
 
-    nmap <C-\>hs :scs find s <C-R>=expand("<cword>")<CR><CR>	
-    nmap <C-\>hg :scs find g <C-R>=expand("<cword>")<CR><CR>	
-    nmap <C-\>hc :scs find c <C-R>=expand("<cword>")<CR><CR>	
-    nmap <C-\>ht :scs find t <C-R>=expand("<cword>")<CR><CR>	
-    nmap <C-\>he :scs find e <C-R>=expand("<cword>")<CR><CR>	
-    nmap <C-\>hf :scs find f <C-R>=expand("<cfile>")<CR><CR>	
-    nmap <C-\>hi :scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>	
-    nmap <C-\>hd :scs find d <C-R>=expand("<cword>")<CR><CR>	
+    nnoremap <C-\>hs :scs find s <C-R>=expand("<cword>")<CR><CR>	
+    nnoremap <C-\>hg :scs find g <C-R>=expand("<cword>")<CR><CR>	
+    nnoremap <C-\>hc :scs find c <C-R>=expand("<cword>")<CR><CR>	
+    nnoremap <C-\>ht :scs find t <C-R>=expand("<cword>")<CR><CR>	
+    nnoremap <C-\>he :scs find e <C-R>=expand("<cword>")<CR><CR>	
+    nnoremap <C-\>hf :scs find f <C-R>=expand("<cfile>")<CR><CR>	
+    nnoremap <C-\>hi :scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>	
+    nnoremap <C-\>hd :scs find d <C-R>=expand("<cword>")<CR><CR>	
 
 
     " Vertical split instead of a horizontal one (vim 6 and up only)
@@ -96,14 +96,14 @@ if has("cscope")
     " (Note: you may wish to put a 'set splitright' in your .vimrc
     " if you prefer the new window on the right instead of the left
 
-    nmap <C-\>vs :vert scs find s <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-\>vg :vert scs find g <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-\>vc :vert scs find c <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-\>vt :vert scs find t <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-\>ve :vert scs find e <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-\>vf :vert scs find f <C-R>=expand("<cfile>")<CR><CR>	
-    nmap <C-\>vi :vert scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>	
-    nmap <C-\>vd :vert scs find d <C-R>=expand("<cword>")<CR><CR>
+    nnoremap <C-\>vs :vert scs find s <C-R>=expand("<cword>")<CR><CR>
+    nnoremap <C-\>vg :vert scs find g <C-R>=expand("<cword>")<CR><CR>
+    nnoremap <C-\>vc :vert scs find c <C-R>=expand("<cword>")<CR><CR>
+    nnoremap <C-\>vt :vert scs find t <C-R>=expand("<cword>")<CR><CR>
+    nnoremap <C-\>ve :vert scs find e <C-R>=expand("<cword>")<CR><CR>
+    nnoremap <C-\>vf :vert scs find f <C-R>=expand("<cfile>")<CR><CR>	
+    nnoremap <C-\>vi :vert scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>	
+    nnoremap <C-\>vd :vert scs find d <C-R>=expand("<cword>")<CR><CR>
 
     " open search result in New Tab
     function! CscopeFindNewTab(word, type)
@@ -111,12 +111,12 @@ if has("cscope")
         exe 'cs find '.a:type.' '.a:word
     endfunction
 
-    nmap <C-\>ts :call CscopeFindNewTab('<C-R><C-W>', 's')<CR>
-    nmap <C-\>tg :call CscopeFindNewTab('<C-R><C-W>', 'g')<CR>
-    nmap <C-\>tc :call CscopeFindNewTab('<C-R><C-W>', 'c')<CR>
-    nmap <C-\>tt :call CscopeFindNewTab('<C-R><C-W>', 't')<CR>
-    nmap <C-\>te :call CscopeFindNewTab('<C-R><C-W>', 'e')<CR>
-    nmap <C-\>td :call CscopeFindNewTab('<C-R><C-W>', 'd')<CR>
+    nnoremap <C-\>ts :call CscopeFindNewTab('<C-R><C-W>', 's')<CR>
+    nnoremap <C-\>tg :call CscopeFindNewTab('<C-R><C-W>', 'g')<CR>
+    nnoremap <C-\>tc :call CscopeFindNewTab('<C-R><C-W>', 'c')<CR>
+    nnoremap <C-\>tt :call CscopeFindNewTab('<C-R><C-W>', 't')<CR>
+    nnoremap <C-\>te :call CscopeFindNewTab('<C-R><C-W>', 'e')<CR>
+    nnoremap <C-\>td :call CscopeFindNewTab('<C-R><C-W>', 'd')<CR>
 
 endif
 
