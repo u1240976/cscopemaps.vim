@@ -108,7 +108,16 @@ if has("cscope")
     " open search result in New Tab
     function! CscopeFindNewTab(word, type)
         exe 'tabnew'
+
+        redir => result
         exe 'cs find '.a:type.' '.a:word
+        redir END
+
+        let result = split(result, '\n')[2]
+        if result[0] == 'E'
+            tabmove -1
+            tabclose
+        endif
     endfunction
 
     nnoremap <Leader>ts :call CscopeFindNewTab('<C-R><C-W>', 's')<CR>
